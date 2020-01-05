@@ -1,0 +1,16 @@
+
+.card-img{height: 56vw; width: 100%; object-fit: cover;}
+.card-footer{width: 100%; margin-top: -4px;}
+.productPrice{
+  width: 64%; height: 40px; float: right;
+  text-align: center; line-height: 40px; font-weight: bold;
+  color: #00980F;
+}
+
+.card-button{
+  width: 36%; height: 40px;
+  background-color: #3B0AB1; border-radius: 0 50px 0 0;
+  font-size: 20px; color: white;
+}
+
+pre{display: none; max-height: max-content;}

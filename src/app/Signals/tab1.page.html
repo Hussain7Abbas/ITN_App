@@ -1,0 +1,17 @@
+<ion-content *ngIf="!isUser">
+  <div id="signInForm">
+    <div id="signInDiv">
+      <h3>ادخل معرف الدخول الخاص بك</h3>
+      <input type="text" [(ngModel)]="signInIdUs">
+      <button type="button" (click)="signIn()">تسجيل دخول</button>
+      <img class="loadingSVG" id="loadingSVGLogin" src="../../assets/imgs/loading.png">
+    </div>
+  </div>
+</ion-content>
+
+<ion-content *ngIf="isUser">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)"><ion-refresher-content pullingIcon="none"></ion-refresher-content></ion-refresher>
+
+
+  <ion-infinite-scroll threshold="30px" (ionInfinite)="doScroll($event)"><ion-infinite-scroll-content loadingSpinner="null"><img id="loadingSVG" src="../../assets/imgs/loading.png"></ion-infinite-scroll-content></ion-infinite-scroll>
+</ion-content>

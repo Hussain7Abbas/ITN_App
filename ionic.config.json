@@ -1,0 +1,7 @@
+{
+  "name": "land_fitness",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
