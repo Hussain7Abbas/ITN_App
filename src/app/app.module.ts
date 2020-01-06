@@ -15,12 +15,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { NotifiPageModule } from "./notifi/notifi.module";
 import { AboutPageModule } from "./about/about.module";
-
+import { add_investorPageModule } from "./modals/add_investor/add_investor.module";
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, NotifiPageModule, AboutPageModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, NotifiPageModule, AboutPageModule, add_investorPageModule],
   providers: [
     StatusBar,
     SplashScreen,

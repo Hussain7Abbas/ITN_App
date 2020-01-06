@@ -1,0 +1,21 @@
+<ion-header slot="top">
+  <h3 class="navBarTitle">تسجيل مستثمر</h3>
+  <img class="navBarIcons" (click)="dismiss()" src="assets/icon/arrowDown.svg" style="float: left;">
+</ion-header>
+
+   
+<ion-content>
+
+<div class="content">
+    <div id="investorForm">
+        <h2>معلومات المستثمر</h2>
+        <div class="inputDiv"><h4>الاسم</h4><input type="text" maxlength="20" [(ngModel)]="investor.name"></div>
+        <div class="inputDiv"><h4>رقم الهاتف</h4><input type="tel" maxlength="11" [(ngModel)]="investor.phone"></div>
+        <div class="inputDiv"><h4>البريد الالكتروني</h4><input type="text" maxlength="30" [(ngModel)]="investor.email"></div>
+        <div class="inputDiv"><h4>مبلغ الاستثمار (بالدولار)</h4><input type="tel" maxlength="15" [(ngModel)]="investor.price"></div>
+        <button type="button" (click)="addInvestor()">ارسال المعلومات</button>
+        <img class="loadingSVG" id="loadingSVGLogin" src="../../../assets/imgs/loading.png">
+    </div>
+</div>
+
+</ion-content>

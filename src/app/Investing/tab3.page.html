@@ -1,3 +1,32 @@
-<ion-content >
+<ion-content>
+    <div class="page-header"><hr><h3>الاستثمار</h3><hr></div>
+
+    <img id="headerImg" src="../../assets/imgs/investing.png">
+    <h1 id="headerText">استثمر اموالك مع</h1>
+    <img id="logoImg" src="../../assets/imgs/logo.png">
+
+<pre>هدفنا هو تحقيق الوفرة المالية لجميع العملاء الكرام
+اذا كنت ترغب ان تكون احد أصحاب الثراء المالي فخيارك الوحيد هو شبكتنا
+للأسئلة والاستفسار يرجى التواصل مع فريق الدعم او بالحضور الى مقر شبكتنا الكائن في:
+
+الديوانية - العروبة - شارع المتحف - العمارة مقابل المفوضية العليا للانتخابات طابق 2</pre>
+
+    <h5 class="sectionTitle" style="background-color: #C4FFFB;">شروط الاستثمار</h5>
+
+<pre>1.ايداع الاموال بحسابك 1000$ فأكثر.
+2. لديك محفظة دائمية لزين كاش.</pre>
+
+    <h5 class="sectionTitle SeTi-left" style="background-color: #C4FFDE;">نسبة الارباح</h5>
+
+<pre>ستحصل بدون خطورة على رأس مالك ارباح 10% حسب ايداعك
+1000$ شهريا 100$
+2000$ شهريا 200$
+5000$ شهريا 500$
+10000$ شهريا 1000$
+50 الف دولار شهريا 5 الف دولار
+100 الف دولار شهريا 10 الف دولار</pre>
+
+   <h4 id="joinBtn" (click)="addInvestorModal()" *ngIf="!isInvestor">اشترك الآن</h4>
+   <h4 id="joinBtn" (click)="addInvestorModal()" *ngIf="isInvestor">مرحباً {{investorName}}</h4>
 
 </ion-content>

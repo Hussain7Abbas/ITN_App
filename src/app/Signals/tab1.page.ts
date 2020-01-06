@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ITNDBService } from "../ITN-db.service";
+import { Clipboard } from '@ionic-native/clipboard/ngx';
 
 @Component({
   selector: 'app-tab1',
@@ -27,7 +28,7 @@ export class Tab1Page {
     joinDate: <string> this.ITNDB.getDateTime("date")
   };
   
-  constructor(private ITNDB:ITNDBService) {}
+  constructor(private ITNDB:ITNDBService, private clipboard: Clipboard,) {}
 
   ngOnInit(){
     this.loadUser()
@@ -36,6 +37,7 @@ export class Tab1Page {
   // ============== Back End ==============
 
   doRefresh(event){
+    this.signals = []
     this.loadData('99999').then(()=>{
       event.target.complete();
     })
@@ -61,17 +63,18 @@ export class Tab1Page {
   }
 
   loadUser(){
-    this.signals = [];
     if (localStorage.getItem("user") == "deleted"){
-      this.ITNDB.presentAlert('اشتراك القاعة', 'لقد تم حذف حسابك من القاعة من قبل الادارة.');
+      this.ITNDB.presentAlert('اشتراك الشبكة', 'لقد تم حذف حسابك من الشبكة من قبل الادارة.');
       this.isUser = false;
     }else if (localStorage.getItem("user") !== null) {
       this.isUser = true;
       this.user = JSON.parse(localStorage.getItem("user"));
       if (this.userDays(this.user.joinDay) < 0) {
-        this.ITNDB.presentAlert('اشتراك القاعة', 'لقد انتهى اشتراكك في القاعة يرجى تجديد الاشتراك لتتمكن من استخدام حسابك فيها.');
+        this.ITNDB.presentAlert('اشتراك الشبكة', 'لقد انتهى اشتراكك في الشبكة يرجى تجديد الاشتراك لتتمكن من استخدام حسابك فيها.');
       }else{
-        this.loadData('99999');
+        setTimeout(() => {
+          this.loadData('99999');
+        }, 500);
       }
     }else{
       this.isUser = false;
@@ -87,6 +90,7 @@ export class Tab1Page {
           this.ITNDB.presentAlert('اشتراك', 'معرف المستخدم غير موجود يرجى التأكد من كتابته بصورة صحيحة.');
         }else{
           localStorage.setItem('user', JSON.stringify(user['data']));
+          this.isUser = true;
           this.loadData('99999');
         }
         document.getElementById('loadingSVGLogin').style.display = 'none';
@@ -102,6 +106,15 @@ export class Tab1Page {
     return 30 - (Number(String(date.getFullYear()) + String(date.getMonth() + 1).padStart(2, '0') + String(date.getDate()).padStart(2, '0')) - Number(realJoinDay));
   }
   
+  copyToClipboard(value){
+    this.clipboard.copy(value);
+    this.ITNDB.presentToast('تم نسخ ' + value + ' الى الحافظة', 'dark')
+  }
+
+  getAction(action:boolean){if (action) {return "شراء"}else{return "بيع"}}
+  cardClass(status: boolean, action: boolean){if (status) {if (action) {return "card-buy"}else{return "card-sell"}}else{return "card-close"}}
+  cardImg(status: boolean, action: boolean){if (status) {if (action) {return "buyIcon.png"}else{return "sellIcon.png"}}else{if (action) {return "buyIconB.png"}else{return "sellIconB.png"}}}
+
   // checksignal(idTr: string){
   //   if (document.getElementById('CHECK' + idTr).getAttribute('src') == "../../assets/imgs/checkedImg.png") {
   //     document.getElementById('CHECK' + idTr).setAttribute('src', "../../assets/imgs/uncheckedImg.png");

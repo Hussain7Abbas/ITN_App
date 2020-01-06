@@ -34,17 +34,6 @@ export class ITNDBService {
     }
   }
 
-  // ===================== make random id ========================
-  getId(){
-    let characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    let randomString = ""
-    for (let i = 0; i < 7 + 1; i++) {
-        let index = Math.floor(Math.random() * characters.length);
-        randomString += characters[index];
-    }
-    return randomString;
-  }
-
   getData(pageName: string, lastDataId: string){
     return new Promise((resolve, reject) => {
       if (localStorage.getItem('isOnline') == '1') {

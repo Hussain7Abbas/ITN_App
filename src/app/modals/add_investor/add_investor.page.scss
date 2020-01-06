@@ -1,0 +1,14 @@
+// =============== Nav Bar Section ===============
+.navBarIcons{height: 12px; margin: 18px 20px;}
+ion-label{
+     font-size: 18px;
+     font-weight: bold;
+}
+
+// =============== Page Section ===============
+*{font-family: 'Changa', sans-serif !important;}
+.content{background-image: url('../../../assets/imgs/investorBackground.jpg'); background-size: cover; height: 100%;}
+#investorForm{margin: 10% 0; color: white;} #investorForm h2{text-align: center; font-weight: bold; margin: 7% 0;}
+#investorForm button{height: 40px; width: 50%; display: block; margin: 15px auto; background-color: white; border-radius: 20px; font-size: 16px; font-weight: bold;}
+.inputDiv{margin: 5px 10px;} .inputDiv h4{font-weight: bold; text-shadow: 2px 2px 3px black;}
+input{margin: 10px 0; padding: 0 10px; color: black; border-radius: 10px; height: 40px; width: 100%; box-shadow: 2px 2px 3px #616161; border: 0px;}

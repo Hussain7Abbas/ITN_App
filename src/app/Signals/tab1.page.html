@@ -5,13 +5,38 @@
       <input type="text" [(ngModel)]="signInIdUs">
       <button type="button" (click)="signIn()">تسجيل دخول</button>
       <img class="loadingSVG" id="loadingSVGLogin" src="../../assets/imgs/loading.png">
+      <h5>تواصل مع ادارة الشبكة للاشتراك والحصول على معرف</h5>
     </div>
   </div>
 </ion-content>
 
 <ion-content *ngIf="isUser">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)"><ion-refresher-content pullingIcon="none"></ion-refresher-content></ion-refresher>
+  <div class="page-header"><hr><h3>التوصيات</h3><hr></div>
 
+  <div *ngFor="let signal of signals" class="card {{cardClass(signal.status, signal.action)}}" id="{{signal.idSi}}">
+    <div class="card-header">
+      <img style="float: right;" src="../../assets/icon/{{cardImg(signal.status, signal.action)}}">
+      <h4 class="card-title">{{getAction(signal.action)}}</h4>
+      <h4 class="card-pairs">{{signal.pairs?.toUpperCase().slice(0, 3)}} | {{signal.pairs?.toUpperCase().slice(3, 6)}}</h4>
+    </div>
+    <div class="h-line"></div>
+    <div class="card-body">
+      <div class="halfDiv">
+        <div (click)="copyToClipboard(signal.tp)"><img src="../../assets/icon/TP.png"><h4 style="color: #04C257;">{{signal.tp}}</h4></div>
+        <div (click)="copyToClipboard(signal.sl)"><img src="../../assets/icon/SL.png"><h4 style="color: #E80000;">{{signal.sl}}</h4></div>
+      </div>
+      <div class="halfDiv">
+        <div (click)="copyToClipboard(signal.lotXm)"><h4>XM: {{signal.lotXM}}</h4></div>
+        <div (click)="copyToClipboard(signal.lotTnfx)"><h4>TNFX: {{signal.lotTNFX}}</h4></div>
+      </div>
+    </div>
+    <div class="h-line"></div>
+    <div class="card-footer">
+      <p dir="ltr">{{signal.date}}</p>
+    </div>
+
+  </div>
 
   <ion-infinite-scroll threshold="30px" (ionInfinite)="doScroll($event)"><ion-infinite-scroll-content loadingSpinner="null"><img id="loadingSVG" src="../../assets/imgs/loading.png"></ion-infinite-scroll-content></ion-infinite-scroll>
 </ion-content>
